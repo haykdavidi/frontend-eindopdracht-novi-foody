@@ -11,22 +11,61 @@ export class UserStore {
         this.initRecipes();
     }
 
-    login(email, password) {
+    async login(email, password) {
         const data = {
             email: email,
             password: password
         };
 
-        // TODO: Request naar back-end hier implementeren
+        try {
+            const response = await fetch('https://api.datavortex.nl/moodfood/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': 'moodfood:1eWXiJ7AnZPPemeiGYY0'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                const token = await response.json();
+                localStorage.setItem('token', token); // Save token to local storage
+                this.authenticated = true;
+            } else {
+                throw new Error('Login failed');
+            }
+        } catch (error) {
+            console.error('Error logging in:', error);
+            throw error;
+        }
     }
 
-    register(email, password) {
+    async register(email, password) {
         const data = {
             email: email,
             password: password
         };
 
-        // TODO: Request naar back-end hier implementeren
+        try {
+            const response = await fetch('https://api.datavortex.nl/moodfood/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': 'moodfood:1eWXiJ7AnZPPemeiGYY0'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                // If registration is successful, you might want to log in the user automatically
+                await this.login(email, password);
+            } else {
+                throw new Error('Registration failed');
+            }
+        } catch (error) {
+            console.error('Error registering:', error);
+            throw error;
+        }
     }
 
     initRecipes() {
