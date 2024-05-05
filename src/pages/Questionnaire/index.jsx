@@ -17,17 +17,23 @@ function Questionnaire() {
     const [open, setOpen] = useState(false);
     const [recipes, setRecipes] = useState([]);
 
-    // TODO: Voeg vragen toe aan deze array, deze worden automatisch erbij gerenderd.
     const [questions, setQuestions] = useState([
         {
-            question: "Vraag 1", answer: ""
+            question: "Question 1: Do you feel lucky today?", answer: ""
         },
         {
-            question: "Vraag 2", answer: ""
+            question: "Question 2: On a scale of 1 to 10, how much do you feel like a superhero today?", answer: ""
         },
         {
-            question: "Vraag 2", answer: ""
+            question: "Question 3: How would you rate your current mood on the Grumpy Cat scale?", answer: ""
+        },
+        {
+            question: "Question 4: Are you in love at this very moment?", answer:""
+        },
+        {
+            question: "Question 5: Why did the chicken cross the road?", answer:""
         }
+
     ]);
 
     const questionValueChange = (i, e) => {
@@ -60,7 +66,7 @@ function Questionnaire() {
 
     return (
         <FormContainer>
-            <FormHeader>Questionnaire</FormHeader>
+            <FormHeader>Match your MoodFood</FormHeader>
             <FormDescription>
                 Answer the following three questions and suprise yourself with recipes!
             </FormDescription>
