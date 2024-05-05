@@ -1,0 +1,22 @@
+# Installatiehandleiding
+
+## 1. Inleiding
+
+Soms ontbreekt het ons aan creatieve inspiratie om een maaltijd te bedenken. Het dagelijks nadenken over wat er vanavond gekookt moet worden kan vermoeiend zijn. Om dit op te lossen, ga ik een applicatie bouwen waarbij door middel van leuke vragen over je stemming, gezelschap en motivatie een maaltijd wordt samengesteld. Je krijgt direct leuke receptsuggesties nadat we je mood hebben gepeild.
+
+## 2. Voorwaarden/Benodigdheden
+
+NPM (installeren)
+IDE (Webstorm)
+Google Chrome/Edge
+Git
+Terminal
+
+## 3. Installatie
+
+1. Kopier het project 
+2. Open een nieuwe directory
+3. voer in npm install
+4. voer in npm run dev 
+
+Lets find your MoodFood! 
