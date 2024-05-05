@@ -18,8 +18,12 @@ function Tempo() {
 
     const [questions, setQuestions] = useState([
         {
-            question: "How many minutes do you have every day to cook?",
+            question: "How many minutes do you have today to cook?",
             answer: 10
+        },
+        {
+            question: "On a scale from 1 - 10, how busy are you today?",
+            answer: 1
         },
     ]);
 
