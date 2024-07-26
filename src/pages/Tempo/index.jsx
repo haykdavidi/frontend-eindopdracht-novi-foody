@@ -1,15 +1,7 @@
-import {observer} from "mobx-react-lite";
-import {useState} from "react";
-import {
-    FormContainer,
-    FormDescription,
-    FormHeader,
-    FormItem,
-    FormItemInput,
-    FormItemLabel, SubmitFormButton
-} from "../Questionnaire/styles.js";
+import { useState } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 import ResultsModal from "../../components/ResultsModal/index.jsx";
+import './tempo.css';
 
 function Tempo() {
     const [exploding, setExploding] = useState(false);
@@ -17,18 +9,12 @@ function Tempo() {
     const [recipes, setRecipes] = useState([]);
 
     const [questions, setQuestions] = useState([
-        {
-            question: "How many minutes do you have today to cook?",
-            answer: 10
-        },
-        {
-            question: "On a scale from 1 - 10, how busy are you today?",
-            answer: 1
-        },
+        { question: "How many minutes do you have today to cook?", answer: 10 },
+        { question: "On a scale from 1 - 10, how busy are you today?", answer: 1 }
     ]);
 
     const questionValueChange = (i, e) => {
-        let copyQuestions = [...questions];
+        const copyQuestions = [...questions];
         copyQuestions[i].answer = e.target.value;
         setQuestions(copyQuestions);
     };
@@ -57,25 +43,26 @@ function Tempo() {
     };
 
     return (
-        <FormContainer>
-            <FormHeader>Decide The Tempo</FormHeader>
-            <FormDescription>Generate recipes based on your availability!</FormDescription>
+        <div className="form-container">
+            <h1 className="form-header">Decide The Tempo</h1>
+            <p className="form-description">Generate recipes based on your availability!</p>
 
             {questions.map((question, i) => (
-                <FormItem key={`question-${i}`}>
-                    <FormItemLabel>{question.question}</FormItemLabel>
-                    <FormItemInput
+                <div className="form-item" key={`question-${i}`}>
+                    <label className="form-item-label">{question.question}</label>
+                    <input
+                        className="form-item-input"
                         type="number"
                         onChange={(e) => questionValueChange(i, e)}
                         value={question.answer}
                     />
-                </FormItem>
+                </div>
             ))}
 
-            <SubmitFormButton onClick={onSubmit}>Suprise me with recipes!</SubmitFormButton>
+            <button className="submit-form-button" onClick={onSubmit}>Surprise me with recipes!</button>
             {exploding && (
                 <ConfettiExplosion
-                    style={{zIndex: 1000}}
+                    style={{ zIndex: 1000 }}
                     particleCount={400}
                     duration={3000}
                     onComplete={onConfettiComplete}
@@ -83,8 +70,8 @@ function Tempo() {
                 />
             )}
             <ResultsModal open={open} handleOpenChange={handleOpenChange} recipes={recipes} />
-        </FormContainer>
+        </div>
     );
 }
 
-export default observer(Tempo);
+export default (Tempo);
