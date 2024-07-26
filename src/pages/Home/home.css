@@ -1,44 +1,45 @@
-import styled from "styled-components";
-import {Link} from "react-router-dom";
-
-export const HomeContainer = styled.div`
+.home-container {
     height: 100%;
     width: 100%;
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     user-select: none;
-`;
+}
 
-export const Name = styled.p`
+.name {
     font-family: Cooking, serif;
     font-size: 100px;
     text-align: center;
     color: rgb(232, 99, 36);
     margin-bottom: 16px;
+}
 
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
+    .name {
         font-size: 72px;
     }
-`;
+}
 
-export const Description = styled.p`
+.description {
     font-family: Anko, serif;
     font-size: 24px;
     text-align: center;
     margin-bottom: 32px;
+}
 
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
+    .description {
         font-size: 20px;
     }
-`;
+}
 
-export const HomeButtons = styled.div`
+.home-buttons {
     display: flex;
-`;
+}
 
-export const ToSearchButton = styled(Link)`
+.to-search-button {
     margin: 0 4px;
     padding: 16px 32px;
     border-radius: 25px;
@@ -48,8 +49,9 @@ export const ToSearchButton = styled(Link)`
     font-size: 16px;
     cursor: pointer;
     text-decoration: none;
-    
-    &:hover {
-        filter: brightness(90%);
-    }
-`;
+    text-align: center;
+}
+
+.to-search-button:hover {
+    filter: brightness(90%);
+}
