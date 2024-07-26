@@ -71,23 +71,33 @@ The application uses Firebase for email and password authentication. This enable
 
 The application uses Context API to manage user authentication and recipe data. The UserContext provides global state management for user information and recipe handling.
 
+# Setup and Installation
 
-## Setup and Installation
+## Conditions
 
-1. **Conditions**
+- **NPM** (installing)
+- **IDE** (WebStorm)
+- **Google Chrome/Edge**
+- **Git**
+- **Terminal**
 
-   NPM (installing)
-   IDE (Webstorm)
-   Google Chrome/Edge
-   Git
-   Terminal
+## To set up the Recipe App, follow these steps:
 
-To set up the Recipe App, follow these steps:
+1. **Clone the Repository**:
+    ```sh
+    git clone https://github.com/haykdavidi/frontend-eindopdracht-novi-foody.git
+    ```
 
-2. **Clone the Repository**
+2. **Open a new directory**:
+    Navigate to the directory where you want to place the project.
 
-   ```bash
-   Clone the project: https://github.com/haykdavidi/frontend-eindopdracht-novi-foody.git
-   Open a new directory
-   Run npm install
-   Run npm run dev
+3. **Install dependencies**:
+    ```sh
+    npm install
+    ```
+
+4. **Start the development server**:
+    ```sh
+    npm run dev
+    ```
+
