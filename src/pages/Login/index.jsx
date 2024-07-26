@@ -1,64 +1,78 @@
-import {
-    CreateAccount, CreateAccountLabel,
-    FormContainer,
-    FormDescription,
-    FormHeader,
-    FormItem,
-    FormItemInput,
-    FormItemLabel, SubmitFormButton
-} from "../Questionnaire/styles.js";
-import {useState} from "react";
-import {observer} from "mobx-react-lite";
-import {userStore} from "../../stores/index.js";
+import { useState } from "react";
+import { useUser } from "../../context/MainContext.jsx";
+import './login.css';
 
 function Login() {
-    const [mode, setMode] = useState("login");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [mode, setMode] = useState("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login, register, error, clearError  } = useUser();
 
-    const handleModeChange = () => {
-        setMode(mode === "login" ? "register" : "login");
-    };
+  const handleModeChange = () => {
+    setMode(mode === "login" ? "register" : "login");
+    clearError();
+  };
 
-    const login = () => {
-        userStore.login(email, password);
-    };
+  const handleLogin = async () => {
+    try {
+      clearError();
+      await login(email, password);
+    } catch (error) {
+      console.error("Failed to login", error);
+    }
+  };
 
-    const register = () => {
-        userStore.register(email, password);
-    };
+  const handleRegister = async () => {
+    try {
+      clearError();
+      await register(email, password);
+    } catch (error) {
+      console.error("Failed to register", error);
+    }
+  };
 
-    return (
-        <FormContainer>
-            <FormHeader>{mode === "login" ? "Login" : "Sign Up"}</FormHeader>
-            <FormDescription>Start searching and saving your favourite recipes!</FormDescription>
+  return (
+    <div className="form-container">
+      <h1 className="form-header">{mode === "login" ? "Login" : "Sign Up"}</h1>
+      <p className="form-description">
+        Start searching and saving your favourite recipes!
+      </p>
+      {error && <p className="error-message">{error}</p>} 
 
-            <FormItem>
-                <FormItemLabel>E-mail</FormItemLabel>
-                <FormItemInput
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                />
-            </FormItem>
-            <FormItem>
-                <FormItemLabel>Password</FormItemLabel>
-                <FormItemInput
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                />
-            </FormItem>
+      <div className="form-item">
+        <label className="form-item-label">E-mail</label>
+        <input
+          className="form-item-input"
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
+      </div>
+      <div className="form-item">
+        <label className="form-item-label">Password</label>
+        <input
+          className="form-item-input"
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
+      </div>
 
-            <SubmitFormButton onClick={mode === "login" ? login : register}>
-                {mode === "login" ? "Login" : "Sign Up"}
-            </SubmitFormButton>
+      <button
+        className="submit-form-button"
+        onClick={mode === "login" ? handleLogin : handleRegister}
+      >
+        {mode === "login" ? "Login" : "Sign Up"}
+      </button>
 
-
-            <CreateAccount>
-                <p>{mode === "login" ? "Don't" : "Already"} have an account?</p>
-                <CreateAccountLabel onClick={handleModeChange}>Create an account</CreateAccountLabel>
-            </CreateAccount>
-        </FormContainer>
-    );
+      <div className="create-account">
+        <p>{mode === "login" ? "Don't" : "Already"} have an account?</p>
+        <a className="create-account-label" onClick={handleModeChange}>
+          Create an account
+        </a>
+      </div>
+    </div>
+  );
 }
 
-export default observer(Login);
+export default Login;
