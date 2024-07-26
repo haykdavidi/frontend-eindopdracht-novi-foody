@@ -1,0 +1,100 @@
+.form-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-header {
+    font-family: 'Cooking', serif;
+    font-size: 72px;
+    margin: 0;
+}
+
+.error-message {
+    color: red;
+}
+@media (max-width: 768px) {
+    .form-header {
+        font-size: 60px;
+    }
+}
+
+.form-description {
+    font-family: 'Anko', serif;
+    font-size: 20px;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+    .form-description {
+        font-size: 16px;
+    }
+}
+
+.form-item {
+    width: 30%;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+    .form-item {
+        width: 90%;
+    }
+}
+
+.form-item-label {
+    display: block;
+    margin: 0 0 8px 8px;
+}
+
+.form-item-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-form-button {
+    padding: 16px 0;
+    margin-top: 16px;
+    border-radius: 25px;
+    border: none;
+    background: rgb(232, 99, 36);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    width: 30%;
+}
+
+.submit-form-button:hover {
+    filter: brightness(90%);
+}
+
+@media (max-width: 768px) {
+    .submit-form-button {
+        width: 90%;
+    }
+}
+
+.create-account {
+    width: 30%;
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .create-account {
+        width: 90%;
+    }
+}
+
+.create-account-label {
+    color: rgb(232, 99, 36);
+    margin-left: 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
