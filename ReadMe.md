@@ -76,18 +76,18 @@ The application uses Context API to manage user authentication and recipe data. 
 
 1. **Conditions**
 
-NPM (installing)
-IDE (Webstorm)
-Google Chrome/Edge
-Git
-Terminal
+   NPM (installing)
+   IDE (Webstorm)
+   Google Chrome/Edge
+   Git
+   Terminal
 
 To set up the Recipe App, follow these steps:
 
 2. **Clone the Repository**
 
    ```bash
-Clone the project: https://github.com/haykdavidi/frontend-eindopdracht-novi-foody.git
-Open a new directory
-Run npm install
-Run npm run dev
+   Clone the project: https://github.com/haykdavidi/frontend-eindopdracht-novi-foody.git
+   Open a new directory
+   Run npm install
+   Run npm run dev
