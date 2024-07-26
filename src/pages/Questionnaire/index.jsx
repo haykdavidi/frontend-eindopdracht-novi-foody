@@ -1,43 +1,22 @@
-import {observer} from "mobx-react-lite";
-import {
-    SubmitFormButton,
-    FormItem,
-    FormItemInput,
-    FormItemLabel,
-    FormContainer,
-    FormDescription,
-    FormHeader
-} from "./styles.js";
-import {useState} from "react";
-import ConfettiExplosion from "react-confetti-explosion";
-import ResultsModal from "../../components/ResultsModal/index.jsx";
+import React, { useState } from 'react';
+import ConfettiExplosion from 'react-confetti-explosion';
+import ResultsModal from '../../components/ResultsModal/index.jsx';
+import './questionnaire.css';
 
 function Questionnaire() {
     const [exploding, setExploding] = useState(false);
     const [open, setOpen] = useState(false);
     const [recipes, setRecipes] = useState([]);
-
     const [questions, setQuestions] = useState([
-        {
-            question: "Question 1: Do you feel lucky today?", answer: ""
-        },
-        {
-            question: "Question 2: On a scale of 1 to 10, how much do you feel like a superhero today?", answer: ""
-        },
-        {
-            question: "Question 3: How would you rate your current mood on the Grumpy Cat scale?", answer: ""
-        },
-        {
-            question: "Question 4: Are you in love at this very moment?", answer:""
-        },
-        {
-            question: "Question 5: Why did the chicken cross the road?", answer:""
-        }
-
+        { question: "Question 1: Do you feel lucky today?", answer: "" },
+        { question: "Question 2: On a scale of 1 to 10, how much do you feel like a superhero today?", answer: "" },
+        { question: "Question 3: How would you rate your current mood on the Grumpy Cat scale?", answer: "" },
+        { question: "Question 4: Are you in love at this very moment?", answer: "" },
+        { question: "Question 5: Why did the chicken cross the road?", answer: "" }
     ]);
 
     const questionValueChange = (i, e) => {
-        let copyQuestions = [...questions];
+        const copyQuestions = [...questions];
         copyQuestions[i].answer = e.target.value;
         setQuestions(copyQuestions);
     };
@@ -65,23 +44,23 @@ function Questionnaire() {
     };
 
     return (
-        <FormContainer>
-            <FormHeader>Match your MoodFood</FormHeader>
-            <FormDescription>
-                Answer the following three questions and suprise yourself with recipes!
-            </FormDescription>
+        <div className="form-container">
+            <h1 className="form-header">Match your MoodFood</h1>
+            <p className="form-description">Answer the following three questions and surprise yourself with recipes!</p>
 
             {questions.map((question, i) => (
-                <FormItem key={`question-${i}`}>
-                    <FormItemLabel>{question.question}</FormItemLabel>
-                    <FormItemInput
+                <div className="form-item" key={`question-${i}`}>
+                    <p className="form-item-label">{question.question}</p>
+                    <input
+                        className="form-item-input"
+                        type="text"
                         onChange={(e) => questionValueChange(i, e)}
                         value={question.answer}
                     />
-                </FormItem>
+                </div>
             ))}
 
-            <SubmitFormButton onClick={onSubmit}>Suprise me with recipes!</SubmitFormButton>
+            <button className="submit-form-button" onClick={onSubmit}>Surprise me with recipes!</button>
             {exploding && (
                 <ConfettiExplosion
                     particleCount={400}
@@ -91,8 +70,8 @@ function Questionnaire() {
                 />
             )}
             <ResultsModal open={open} handleOpenChange={handleOpenChange} recipes={recipes} />
-        </FormContainer>
+        </div>
     );
 }
 
-export default observer(Questionnaire);
+export default Questionnaire;
