@@ -1,21 +1,21 @@
 import React from 'react';
-import {observer} from "mobx-react-lite";
-import {Description, HomeButtons, HomeContainer, Name, ToSearchButton} from "./styles.js";
+import { Link } from 'react-router-dom';
+import './home.css';
 
 function Home() {
     return (
-        <HomeContainer>
-            <Name>MoodFood</Name>
-            <Description>Moody Foody, match your mood with the taste of new food!</Description>
+        <div className="home-container">
+            <p className="name">MoodFood</p>
+            <p className="description">Moody Foody, match your mood with the taste of new food!</p>
 
-            <HomeButtons>
-                <ToSearchButton to="/search">Get started</ToSearchButton>
-                <ToSearchButton to="/questionnaire">Which food is in your mood?</ToSearchButton>
-                <ToSearchButton to="/whats-in-my-fridge">What's in my fridge?</ToSearchButton>
-                <ToSearchButton to="/decide-the-tempo">Decide the tempo</ToSearchButton>
-            </HomeButtons>
-        </HomeContainer>
+            <div className="home-buttons">
+                <Link className="to-search-button" to="/search">Get started</Link>
+                <Link className="to-search-button" to="/questionnaire">Which food is in your mood?</Link>
+                <Link className="to-search-button" to="/whats-in-my-fridge">What's in my fridge?</Link>
+                <Link className="to-search-button" to="/decide-the-tempo">Decide the tempo</Link>
+            </div>
+        </div>
     );
 }
 
-export default observer(Home);
+export default Home;
