@@ -1,48 +1,45 @@
-import styled from "styled-components";
-import {AiOutlineAppstoreAdd, AiOutlineDelete} from "react-icons/ai";
-
-export const RecipeCardContainer = styled.div`
+.recipe-card-container {
     padding: 16px;
     margin: 8px;
     width: 250px;
     border-radius: 5px;
     box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     display: flex;
-    flex-flow: column;
-
-    @media (max-width: 768px) {
-        width: 90%;
+    flex-direction: column;
+  }
+  
+  @media (max-width: 768px) {
+    .recipe-card-container {
+      width: 90%;
     }
-`;
-
-export const RecipeImage = styled.img`
+  }
+  
+  .recipe-image {
     width: 100%;
-`;
-
-export const RecipeName = styled.h4`
-`;
-
-export const RecipeBy =  styled.p`
+  }
+  
+  .recipe-name {
+    margin: 0;
+  }
+  
+  .recipe-by {
     color: gray;
     margin-bottom: 32px;
-`;
-
-export const RecipeActions = styled.div`
+  }
+  
+  .recipe-actions {
     margin-top: auto;
     display: flex;
-`;
-
-export const RecipeLink = styled.a`
+  }
+  
+  .recipe-link {
     text-decoration: none;
     color: rgb(232, 99, 36);
-`;
-
-export const SaveRecipe = styled(AiOutlineAppstoreAdd)`
+  }
+  
+  .save-recipe,
+  .delete-recipe {
     margin-left: auto;
     cursor: pointer;
-`;
-
-export const DeleteRecipe = styled(AiOutlineDelete)`
-    margin-left: auto;
-    cursor: pointer;
-`
+  }
+  
