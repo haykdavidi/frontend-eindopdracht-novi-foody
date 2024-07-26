@@ -1,0 +1,57 @@
+.home-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.name {
+    font-family: Cooking, serif;
+    font-size: 100px;
+    text-align: center;
+    color: rgb(232, 99, 36);
+    margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+    .name {
+        font-size: 72px;
+    }
+}
+
+.description {
+    font-family: Anko, serif;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+    .description {
+        font-size: 20px;
+    }
+}
+
+.home-buttons {
+    display: flex;
+}
+
+.to-search-button {
+    margin: 0 4px;
+    padding: 16px 32px;
+    border-radius: 25px;
+    border: none;
+    background: rgb(232, 99, 36);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.to-search-button:hover {
+    filter: brightness(90%);
+}
