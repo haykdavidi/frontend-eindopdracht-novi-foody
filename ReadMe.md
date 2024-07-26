@@ -1,27 +1,4 @@
-# Installatiehandleiding
-
-## 1. Inleiding
-
-Soms ontbreekt het ons aan creatieve inspiratie om een maaltijd te bedenken. Het dagelijks nadenken over wat er vanavond gekookt moet worden kan vermoeiend zijn. Om dit op te lossen, ga ik een applicatie bouwen waarbij door middel van leuke vragen over je stemming, gezelschap en motivatie een maaltijd wordt samengesteld. Je krijgt direct leuke receptsuggesties nadat we je mood hebben gepeild.
-
-## 2. Voorwaarden/Benodigdheden
-
-NPM (installeren)
-IDE (Webstorm)
-Google Chrome/Edge
-Git
-Terminal
-
-## 3. Installatie
-
-1. Kopier het project : https://github.com/haykdavidi/frontend-eindopdracht-novi-foody.git
-2. Open een nieuwe directory
-3. voer in npm install
-4. voer in npm run dev 
-
-Lets find your MoodFood! 
-
-# Recipe App
+# Installation Guide
 
 ## Overview
 
@@ -97,12 +74,20 @@ The application uses Context API to manage user authentication and recipe data. 
 
 ## Setup and Installation
 
+1. **Conditions**
+
+NPM (installing)
+IDE (Webstorm)
+Google Chrome/Edge
+Git
+Terminal
+
 To set up the Recipe App, follow these steps:
 
-1. **Clone the Repository**
+2. **Clone the Repository**
 
    ```bash
-   git clone <repository-url>
-   cd recipe-app
-   npm install
-   npm run dev
+Clone the project: https://github.com/haykdavidi/frontend-eindopdracht-novi-foody.git
+Open a new directory
+Run npm install
+Run npm run dev
