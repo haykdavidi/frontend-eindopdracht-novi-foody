@@ -1,38 +1,40 @@
-import {observer} from "mobx-react-lite";
-import {Modal} from "react-bootstrap";
-import {Results} from "../../pages/Search/styles.js";
-import RecipeCard from "../Cards/index.jsx";
-import React from "react";
-import {StyledCloseModalBtn, StyledResultsModal} from "./styles.js";
+import { useUser } from "../../context/MainContext.jsx";
+import logo from "../../assets/images/foody.png";
+import { Button } from "react-bootstrap";
+import './navbar.css';
+import { Link } from "react-router-dom";
 
-function ResultsModal({open, handleOpenChange, recipes}) {
-    return (
-        <StyledResultsModal
-            show={open}
-            onHide={() => handleOpenChange(false)}
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-            size="xl"
-        >
-            <Modal.Header closeButton>
-                <Modal.Title>Here are your recipes!</Modal.Title>
-            </Modal.Header>
+function Navbar() {
+  const { authenticated, handleSignOut } = useUser();
 
-            <Modal.Body>
-                <Results>
-                    {recipes.map((recipe, i) => (
-                        <RecipeCard rec={recipe} key={`recipe-${i}`}/>
-                    ))}
-                </Results>
-            </Modal.Body>
+  const handleLogout = async () => {
+    try {
+      await handleSignOut();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-            <Modal.Footer>
-                <StyledCloseModalBtn variant="outline-dark" onClick={() => handleOpenChange(false)}>
-                    Close
-                </StyledCloseModalBtn>
-            </Modal.Footer>
-        </StyledResultsModal>
-    );
+  return (
+    <div className="navbar-container">
+      <img className="navbar-logo" src={logo} alt="Logo" />
+      <div className="menu-items">
+        <Link className="menu-item" to="/">Home</Link>
+        <Link className="menu-item" to="/search">Search</Link>
+        <Link className="menu-item" to="/whats-in-my-fridge">What's in my fridge?</Link>
+        <Link className="menu-item" to="/questionnaire">Questionnaire</Link>
+        <Link className="menu-item" to="/decide-the-tempo">Decide the tempo</Link>
+        {authenticated ? (
+          <>
+            <Link className="menu-item" to="/my-recipes">My Recipes</Link>
+            <Button variant="danger" onClick={handleLogout}>Logout</Button>
+          </>
+        ) : (
+          <Link className="menu-item" to="/login">Login</Link>
+        )}
+      </div>
+    </div>
+  );
 }
 
-export default observer(ResultsModal);
+export default (Navbar);
