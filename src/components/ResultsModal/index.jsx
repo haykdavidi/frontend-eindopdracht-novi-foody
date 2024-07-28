@@ -1,41 +1,35 @@
-import { Modal, Button } from "react-bootstrap";
 import RecipeCard from "../Cards/index.jsx";
 import React from "react";
-import './resultmodal.css';
+import "./resultmodal.css";
 
 function ResultsModal({ open, handleOpenChange, recipes }) {
+  if (!open) return null;
   return (
-    <Modal
-      show={open}
-      onHide={() => handleOpenChange(false)}
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-      size="xl"
-      dialogClassName="results-modal"
-    >
-      <Modal.Header closeButton>
-        <Modal.Title>Here are your recipes!</Modal.Title>
-      </Modal.Header>
-
-      <Modal.Body>
-        <div className="results">
-          {recipes.map((recipe, i) => (
-            <RecipeCard rec={recipe} key={`recipe-${i}`} />
-          ))}
+    <div className="modal-overlay" onClick={handleOpenChange}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h2>Here are your recipes!</h2>
+          <button onClick={handleOpenChange} className="close-button">
+            &times;
+          </button>
         </div>
-      </Modal.Body>
-
-      <Modal.Footer>
-        <Button
-          variant="outline-dark"
-          onClick={() => handleOpenChange(false)}
-          className="close-modal-btn"
-        >
-          Close
-        </Button>
-      </Modal.Footer>
-    </Modal>
+        <div className="modal-body">
+          <div className="results">
+            {recipes.map((recipe, i) => (
+             <div key={`recipe-${i}`}>
+               <RecipeCard rec={recipe} key={`recipe-${i}`} />
+             </div>
+            ))}
+          </div>
+        </div>
+        <div className="modal-footer">
+          <button onClick={handleOpenChange} className="close-modal-btn">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
-export default (ResultsModal);
+export default ResultsModal;

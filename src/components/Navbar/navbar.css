@@ -1,53 +1,65 @@
 .navbar-container {
-    width: 100%;
-    height: 75px;
-    display: flex;
-    padding: 8px 16px;
-    background: #f6f6f7;
-  }
-  
-  @media (max-width: 768px) {
-    .navbar-container {
-      flex-direction: column;
-      height: auto;
-      align-items: center;
-    }
-  }
-  
-  .navbar-logo {
-    height: 100%;
-  }
-  
-  @media (max-width: 768px) {
-    .navbar-logo {
-      max-height: 50px;
-      height: 50px;
-    }
-  }
-  
-  .menu-items {
-    margin-left: auto;
-    display: flex;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  padding: 8px 16px;
+  background: #f6f6f7;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    height: auto;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
   }
-  
-  @media (max-width: 768px) {
-    .menu-items {
-      margin: 8px auto auto auto;
-    }
+}
+
+.navbar-logo {
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar-logo {
+    max-height: 50px;
+    height: 50px;
   }
-  
-  .menu-item {
-    padding: 8px 16px;
-    cursor: pointer;
-    border-bottom: 1px solid transparent;
-    text-decoration: none;
-    color: black;
+}
+
+.menu-items {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .menu-items {
+    margin: 8px auto auto auto;
   }
-  
-  .menu-item:hover {
-    border-bottom: 1px solid orange;
-  }
-  
+}
+
+.menu-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  text-decoration: none;
+  color: black;
+}
+
+.menu-item:hover {
+  border-bottom: 1px solid orange;
+}
+
+.logout-button {
+  padding: 8px 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logout-button:hover {
+  background-color: darkred;
+}

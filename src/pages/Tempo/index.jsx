@@ -19,7 +19,7 @@ function Tempo() {
         setQuestions(copyQuestions);
     };
 
-    const handleOpenChange = (value) => setOpen(value);
+    const handleOpenChange = () => setOpen(!open);
 
     const generateRandomRecipes = async () => {
         const app_id = '3738d17e'; // Replace with your Edamam app ID

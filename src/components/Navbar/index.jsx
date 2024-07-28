@@ -1,6 +1,5 @@
 import { useUser } from "../../context/MainContext.jsx";
 import logo from "../../assets/images/foody.png";
-import { Button } from "react-bootstrap";
 import './navbar.css';
 import { Link } from "react-router-dom";
 
@@ -27,7 +26,7 @@ function Navbar() {
         {authenticated ? (
           <>
             <Link className="menu-item" to="/my-recipes">My Recipes</Link>
-            <Button variant="danger" onClick={handleLogout}>Logout</Button>
+            <button className="logout-button" onClick={handleLogout}>Logout</button>
           </>
         ) : (
           <Link className="menu-item" to="/login">Login</Link>
