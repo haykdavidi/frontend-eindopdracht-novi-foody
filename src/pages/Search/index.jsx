@@ -9,6 +9,7 @@ function Search() {
     const [filters, setFilters] = useState([]);
     const [results, setResults] = useState([]);
 
+
     const handleQueryChange = (e) => setQuery(e.target.value);
 
     const search = (value) => {
@@ -77,8 +78,8 @@ function Search() {
     }, [filters]);
 
     return (
-        <div className="search-container">
-            <div className="search-bar">
+        <div className="search-container" data-aos="fade-up">
+            <div className="search-bar" data-aos="fade-in">
                 <input
                     className="search-input"
                     onChange={handleQueryChange}
@@ -90,7 +91,7 @@ function Search() {
                 <button className="search-button" onClick={onSearchClick}><TbSearch /></button>
             </div>
 
-            <div className="filters">
+            <div className="filters" data-aos="fade-up">
                 {filters.map((filter, i) => (
                     <div className="filter" key={`filter-${i}`}>
                         <span className="filter-value">{filter}</span>
@@ -99,14 +100,14 @@ function Search() {
                 ))}
             </div>
 
-            <div className="results">
+            <div className="results" data-aos="fade-up">
                 {loading ? (
                     <div className="spinner"></div>
                 ) : results.length === 0 ? (
                     <p className="results-placeholder">What do you have in your fridge?</p>
                 ) : (
                     results.map((result, i) => (
-                        <RecipeCard rec={result.recipe} key={`recipe-${i}`} />
+                        <RecipeCard rec={result.recipe} key={`recipe-${i}`} data-aos="fade-up" />
                     ))
                 )}
             </div>
@@ -114,4 +115,4 @@ function Search() {
     );
 }
 
-export default (Search);
+export default Search;

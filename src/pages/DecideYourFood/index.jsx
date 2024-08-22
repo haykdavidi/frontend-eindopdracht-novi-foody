@@ -1,20 +1,18 @@
-import { useState } from "react";
-import ConfettiExplosion from "react-confetti-explosion";
-import ResultsModal from "../../components/ResultsModal/index.jsx";
-import './tempo.css';
+import React, { useState } from 'react';
+import ConfettiExplosion from 'react-confetti-explosion';
+import ResultsModal from '../../components/ResultsModal/index.jsx';
+import './decideyourfood.css';
 
-function Tempo() {
+function DecideYourFood() {
     const [exploding, setExploding] = useState(false);
     const [open, setOpen] = useState(false);
     const [recipes, setRecipes] = useState([]);
-
-    // Extended questions array
     const [questions, setQuestions] = useState([
-        { question: "How many minutes do you have today to cook?", answer: 10 },
-        { question: "On a scale from 1 - 10, how busy are you today?", answer: 1 },
-        { question: "Do you prefer vegetarian recipes?", answer: 0 },  // 0 = No, 1 = Yes
-        { question: "How many servings do you need?", answer: 2 },
-        { question: "What type of cuisine are you in the mood for?", answer: '' } // Text input for specific cuisine
+        { question: "Question 1: Do you feel lucky today?", answer: "" },
+        { question: "Question 2: On a scale of 1 to 10, how much do you feel like a superhero today?", answer: "" },
+        { question: "Question 3: How would you rate your current mood on the Grumpy Cat scale?", answer: "" },
+        { question: "Question 4: Are you in love at this very moment?", answer: "" },
+        { question: "Question 5: Why did the chicken cross the road?", answer: "" }
     ]);
 
     const questionValueChange = (i, e) => {
@@ -28,17 +26,14 @@ function Tempo() {
     const generateRandomRecipes = async () => {
         const app_id = '3738d17e'; // Replace with your Edamam app ID
         const app_key = 'bbe48a223f253671896036d5c4faf81e';
-        const maximumTime = questions[0].answer;
-        const cuisineType = questions[4].answer ? `&cuisineType=${questions[4].answer}` : '';
-        const vegetarianFilter = questions[2].answer == 1 ? `&diet=vegetarian` : '';
-        const res = await fetch(`https://api.edamam.com/search?q=chicken${vegetarianFilter}&app_id=${app_id}&app_key=${app_key}&time=1-${maximumTime}${cuisineType}`);
+        const res = await fetch(`https://api.edamam.com/search?q=chicken&random=true&app_id=${app_id}&app_key=${app_key}`);
         return await res.json();
     };
 
     const onSubmit = () => {
         generateRandomRecipes().then((res) => {
             const recipes = res.hits.map(hit => hit.recipe);
-            setRecipes(recipes.slice(0, 5)); 
+            setRecipes(recipes.slice(0, 5));
             setExploding(true);
             setOpen(true);
         });
@@ -50,15 +45,15 @@ function Tempo() {
 
     return (
         <div className="form-container">
-            <h1 className="form-header">Decide The Tempo</h1>
-            <p className="form-description">Generate recipes based on your availability!</p>
+            <h1 className="form-header">Match your MoodFood</h1>
+            <p className="form-description">Answer the following three questions and surprise yourself with recipes!</p>
 
             {questions.map((question, i) => (
                 <div className="form-item" key={`question-${i}`}>
-                    <label className="form-item-label">{question.question}</label>
+                    <p className="form-item-label">{question.question}</p>
                     <input
                         className="form-item-input"
-                        type={typeof question.answer === 'number' ? 'number' : 'text'}
+                        type="text"
                         onChange={(e) => questionValueChange(i, e)}
                         value={question.answer}
                     />
@@ -68,7 +63,6 @@ function Tempo() {
             <button className="submit-form-button" onClick={onSubmit}>Surprise me with recipes!</button>
             {exploding && (
                 <ConfettiExplosion
-                    style={{ zIndex: 1000 }}
                     particleCount={400}
                     duration={3000}
                     onComplete={onConfettiComplete}
@@ -80,4 +74,4 @@ function Tempo() {
     );
 }
 
-export default Tempo;
+export default DecideYourFood;

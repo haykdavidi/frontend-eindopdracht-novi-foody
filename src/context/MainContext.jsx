@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
     const [userId, setUserId] = useState("");
     const [authenticated, setAuthenticated] = useState(false);
     const [recipes, setRecipes] = useState([]);
-    const [error, setError] = useState(""); // State variable for error messages
+    const [error, setError] = useState("");
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {

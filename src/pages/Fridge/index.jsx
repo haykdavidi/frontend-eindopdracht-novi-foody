@@ -53,15 +53,21 @@ function Fridge() {
     const app_id = '3738d17e'; // Replace with your Edamam app ID
     const app_key = 'bbe48a223f253671896036d5c4faf81e';
     const q = filters.join(" ");
-    const res = await fetch(`https://api.edamam.com/search?q=${q}&app_id=${app_id}&app_key=${app_key}`);
-    return await res.json();
+    try {
+      const res = await fetch(`https://api.edamam.com/search?q=${q}&app_id=${app_id}&app_key=${app_key}`);
+      if (!res.ok) throw new Error('Network response was not ok');
+      return await res.json();
+    } catch (error) {
+      console.error("Failed to fetch recipes", error);
+      return { hits: [] };
+    }
   };
 
   useEffect(() => {
     if (filters.length > 0) {
       setLoading(true);
-      fetchRecipes().then((results) => {
-        setResults(results?.hits ?? []);
+      fetchRecipes().then((data) => {
+        setResults(data.hits ?? []);
         setLoading(false);
       });
     } else {
@@ -70,8 +76,8 @@ function Fridge() {
   }, [filters]);
 
   return (
-    <div className="search-container">
-      <div className="search-bar">
+    <div className="search-container" data-aos="fade-up">
+      <div className="search-bar" data-aos="fade-in">
         <input
           className="search-input"
           onChange={handleQueryChange}
@@ -83,7 +89,7 @@ function Fridge() {
         <button className="search-button" onClick={onSearchClick}><TbSearch /></button>
       </div>
 
-      <div className="filters">
+      <div className="filters" data-aos="fade-up">
         {filters.map((filter, i) => (
           <div className="filter" key={`filter-${i}`}>
             <span className="filter-value">{filter}</span>
@@ -92,16 +98,16 @@ function Fridge() {
         ))}
       </div>
 
-      <div className="results">
+      <div className="results" data-aos="fade-up">
         {(!loading && results.length === 0) && (
           <p className="results-placeholder">What do you have in your fridge?</p>
         )}
         {loading && (
-          <div className="spinner" />
+          <div className="spinner"></div>
         )}
         {(!loading && results.length > 0) && (
           results.map((result, i) => (
-            <RecipeCard rec={result.recipe} key={`recipe-${i}`} />
+            <RecipeCard rec={result.recipe} key={`recipe-${i}`} data-aos="fade-up" />
           ))
         )}
       </div>

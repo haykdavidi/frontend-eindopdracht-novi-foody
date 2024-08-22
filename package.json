@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3",
+    "aos": "^2.3.4",
     "firebase": "^10.12.4",
     "mobx": "^6.12.3",
     "mobx-react-lite": "^4.0.7",
