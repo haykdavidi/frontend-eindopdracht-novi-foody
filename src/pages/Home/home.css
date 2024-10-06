@@ -12,26 +12,30 @@
     font-family: Cooking, serif;
     font-size: 100px;
     text-align: center;
-    color: rgb(232, 99, 36);
+    color: var(--accent-color);
     margin-bottom: 16px;
 }
 
 @media (max-width: 768px) {
     .name {
-        font-size: 72px;
+        font-size: 3.5rem;
     }
 }
 
 .description {
     font-family: Anko, serif;
-    font-size: 24px;
+    font-size: 1.5rem;
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
 }
 
 @media (max-width: 768px) {
     .description {
-        font-size: 20px;
+        font-size: 1.25rem;
+    }
+    .home-buttons{
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
@@ -40,12 +44,12 @@
 }
 
 .to-search-button {
-    margin: 0 4px;
-    padding: 16px 32px;
-    border-radius: 25px;
+    margin: 0.25rem;
+    padding: 1rem 1.5rem;
+    border-radius: 1.5rem;
     border: none;
-    background: rgb(232, 99, 36);
-    color: white;
+    background: var(--accent-color);
+    color: var(--font-with-background);
     font-size: 16px;
     cursor: pointer;
     text-decoration: none;

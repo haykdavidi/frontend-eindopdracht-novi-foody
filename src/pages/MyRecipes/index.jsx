@@ -1,50 +1,56 @@
-import React, { useState, useEffect } from "react";
-import { TbSearch } from "react-icons/tb";
+import React, { useState } from "react";
 import RecipeCard from "../../components/Cards/index.jsx";
 import { useUser } from "../../context/MainContext.jsx";
-import "./myrecipes.css"; // Import the CSS file for styling
+import "./myrecipes.css";
+import NotificationContainer from "../../components/notification/NotificationContainer.jsx";
 
 function MyRecipes() {
-  const { recipes } = useUser();
-  const [query, setQuery] = useState("");
-  
-  const handleQueryChange = (e) => {
-    setQuery(e.target.value);
-  };
+    const { recipes } = useUser();
+    const [query, setQuery] = useState("");
+    const [notifications, setNotifications] = useState([]);
 
-  const containsQuery = (recipes) => {
-    return recipes.filter(recipe => recipe.label.toLowerCase().includes(query.toLowerCase()));
-  };
+    const addNotification = (message, type) => {
+        const id = Date.now();
+        setNotifications(prevNotifications => [...prevNotifications, { id, message, type }]);
 
-  return (
-    <div className="my-recipes-container" data-aos="fade-up">
-      <div className="search-bar" data-aos="fade-in">
-        <input
-          className="search-input"
-          onChange={handleQueryChange}
-          value={query}
-          placeholder="Recipe name"
-        />
-        <button className="search-button"><TbSearch /></button>
-      </div>
+        setTimeout(() => {
+            setNotifications(prevNotifications => prevNotifications.filter(n => n.id !== id));
+        }, 3000);
+    };
 
-      <div className="my-recipes-header" data-aos="fade-up">
-        <h1 className="my-recipes-title">My Recipes</h1>
-        <p className="my-recipes-count">Found {containsQuery(recipes).length} recipes</p>
-      </div>
+    const containsQuery = (recipes) => {
+        return recipes.filter(recipe => recipe.label.toLowerCase().includes(query.toLowerCase()));
+    };
 
-      <div className="results" data-aos="fade-up">
-        {recipes.length === 0 && (
-          <p className="results-placeholder">You have no saved recipes</p>
-        )}
-        {recipes.length > 0 && (
-          containsQuery(recipes).map((recipe, i) => (
-            <RecipeCard rec={recipe} key={`recipe-${i}`} data-aos="fade-up" />
-          ))
-        )}
-      </div>
-    </div>
-  );
+    return (
+        <>
+            <NotificationContainer
+                notifications={notifications}
+            />
+            <section className="my-recipes-container" data-aos="fade-up">
+                <div className="my-recipes-header" data-aos="fade-up">
+                    <h1 className="my-recipes-title">My Recipes</h1>
+                    <p className="my-recipes-count">Found {containsQuery(recipes).length} recipes</p>
+                </div>
+
+                <section className="results" data-aos="fade-up">
+                    {recipes.length === 0 && (
+                        <p className="results-placeholder">You have no saved recipes</p>
+                    )}
+                    {recipes.length > 0 && (
+                        containsQuery(recipes).map((recipe, i) => (
+                            <RecipeCard
+                                rec={recipe}
+                                key={`recipe-${i}`}
+                                data-aos="fade-up"
+                                addNotification={addNotification}
+                            />
+                        ))
+                    )}
+                </section>
+            </section>
+        </>
+    );
 }
 
 export default MyRecipes;

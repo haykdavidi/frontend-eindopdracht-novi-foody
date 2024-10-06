@@ -8,7 +8,7 @@
 
 .search-bar {
     display: flex;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
     width: 50%;
     justify-content: center;
     align-items: center;
@@ -16,39 +16,39 @@
 
 .search-input {
     width: 100%;
-    padding: 16px;
-    border: 1px solid lightgray;
-    border-radius: 25px;
-    font-size: 16px;
+    padding: 1rem;
+    border: var(--border-size) lightgray;
+    border-radius: 1.5625rem;
+    font-size: 1rem;
 }
 
 .search-button {
-    height: 35px;
-    width: 35px;
+    height: 2.1875rem;
+    width: 2.1875rem;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background: rgb(232, 99, 36);
+    background: var(--accent-color);
     border-radius: 50%;
-    padding: 8px;
+    padding: 0.5rem;
     color: white;
-    font-size: 20px;
+    font-size: 1.25rem;
     user-select: none;
     border: none;
-    margin-left: 8px;
+    margin-left: 0.5rem;
 }
 
 .my-recipes-header {
     display: flex;
     align-items: baseline;
     width: 50%;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
     justify-content: space-between;
 }
 
 .my-recipes-title {
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 .my-recipes-count {
@@ -66,7 +66,7 @@
 
 .results-placeholder {
     margin: auto;
-    color: gray;
+    color: var(--secondary-font);
 }
 
 @media (max-width: 768px) {

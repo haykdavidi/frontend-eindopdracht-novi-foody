@@ -1,6 +1,7 @@
 import RecipeCard from "../Cards/index.jsx";
 import React from "react";
 import "./resultmodal.css";
+import Button from "../button/Button.jsx";
 
 function ResultsModal({ open, handleOpenChange, recipes }) {
   if (!open) return null;
@@ -14,18 +15,18 @@ function ResultsModal({ open, handleOpenChange, recipes }) {
           </button>
         </div>
         <div className="modal-body">
-          <div className="results">
+          <div className="results-modal">
             {recipes.map((recipe, i) => (
-             <div key={`recipe-${i}`}>
-               <RecipeCard rec={recipe} key={`recipe-${i}`} />
+             <div key={`recipe-${i}`} id="results-container">
+               <RecipeCard rec={recipe} key={`recipe-${i}`}/>
              </div>
             ))}
           </div>
         </div>
         <div className="modal-footer">
-          <button onClick={handleOpenChange} className="close-modal-btn">
+          <Button onClick={handleOpenChange} className="close-modal-btn">
             Close
-          </button>
+          </Button>
         </div>
       </div>
     </div>

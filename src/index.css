@@ -1,10 +1,19 @@
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+:root {
+    /*shadow variables*/
+    --shadow-color: rgba(149, 157, 165, 0.2);
+    --shadow-offset: 0 8px 24px;
+
+    /*border variables*/
+    --border-size: 1px solid;
+    --input-border: #ccc;
+
+    /*main colors*/
+    --font: black;
+    --secondary-font: gray;
+    --font-with-background: white;
+    --accent-color: rgb(232, 99, 36);
+    --background: white;
+    --accent-background: rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -15,12 +24,23 @@ body {
     margin: 0;
 }
 
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+}
+
 @font-face {
     font-family: Cooking;
     src: url("assets/fonts/cooking.ttf");
+    font-display: swap;
 }
 
 @font-face {
     font-family: Anko;
     src: url("assets/fonts/anko.ttf");
+    font-display: swap;
 }

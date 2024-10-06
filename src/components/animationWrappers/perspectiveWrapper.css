@@ -1,0 +1,15 @@
+.perspective-container {
+    perspective: 1000px;
+    display: flex;
+    position: relative;
+    pointer-events: none;
+}
+
+.motion-element {
+    transform-style: preserve-3d;
+    transform-origin: right;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    pointer-events: all;
+}

@@ -7,7 +7,7 @@
 
 .search-bar {
     display: flex;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -15,10 +15,10 @@
 
 .search-input {
     width: 30%;
-    padding: 16px;
-    border: 1px solid lightgray;
-    border-radius: 25px;
-    font-size: 16px;
+    padding: 1rem;
+    border: var(--border-size) lightgray;
+    border-radius: 1.5625rem;
+    font-size: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -28,20 +28,20 @@
 }
 
 .search-button, .add-filter-button {
-    height: 35px;
-    width: 35px;
+    height: 2.1875rem;
+    width: 2.1875rem;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background: rgb(232, 99, 36);
+    background: var(--accent-color);
     border-radius: 50%;
-    padding: 8px;
-    color: white;
-    font-size: 20px;
+    padding: 0.5rem;
+    color: var(--font-with-background);
+    font-size: 1.25rem;
     user-select: none;
     border: none;
-    margin-left: 8px;
+    margin-left: 0.5rem;
 }
 
 .search-button:hover, .add-filter-button:hover {
@@ -50,7 +50,7 @@
 
 .filters {
     display: flex;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -59,27 +59,27 @@
 }
 
 .filter {
-    min-width: 75px;
-    margin: 0 4px 8px 4px;
-    padding: 8px 8px 8px 16px;
-    border-radius: 25px;
+    min-width: 4.6875rem;
+    margin: 0 0.25rem 0.5rem 0.25rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border-radius: 1.5625rem;
     background: lightgray;
     display: flex;
     align-items: center;
+    align-content: center;
     justify-content: center;
 }
 
 .filter-value {
-    margin-right: 8px;
-    white-space: nowrap;
+    display: block;
+    margin-right: 0.5rem;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .remove-filter-button {
     margin-left: auto;
-    height: 25px;
-    width: 25px;
+    height: 1.5625rem;
+    width: 1.5625rem;
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -100,15 +100,15 @@
 
 .results-placeholder {
     margin: auto;
-    color: gray;
+    color: var(--secondary-font);
 }
 
 .spinner {
-    border: 5px solid rgba(0, 0, 0, 0.1);
+    border: 0.3125rem solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
-    border-top: 5px solid rgb(239, 133, 11);
-    width: 50px;
-    height: 50px;
+    border-top: 0.3125rem solid rgb(239, 133, 11);
+    width: 3.125rem;
+    height: 3.125rem;
     animation: spin 1s linear infinite;
     margin: auto;
 }

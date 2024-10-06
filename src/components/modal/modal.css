@@ -1,0 +1,49 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 1.25rem;
+    border-radius: 0.3125rem;
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.modal-children {
+    display: flex;
+    min-width: 100%;
+    justify-content: space-between;
+}
+
+.modal-close-button {
+    background-color: white;
+    color: var(--font);
+    border: var(--border-size) var(--input-border);
+    padding: 0.625rem;
+    cursor: pointer;
+    border-radius: 0.3125rem;
+    margin: 0.5rem;
+}
+
+.confirm {
+    background-color: red;
+    color: var(--font-with-background);
+    border: none;
+    padding: 0.625rem;
+    cursor: pointer;
+    border-radius: 0.3125rem;
+    margin: 0.5rem;
+}

@@ -1,0 +1,32 @@
+.notifications-container {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    padding: 10px;
+
+}
+
+.notification{
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    background: var(--accent-color);
+    color: var(--font-with-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-top: 0.5rem
+}
+
+.notification.success{
+    color: green;
+}
+
+.notification.error{
+    color: red;
+}

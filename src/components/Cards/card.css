@@ -1,11 +1,13 @@
-.recipe-card-container {
-    padding: 16px;
-    margin: 8px;
+  .recipe-card-container {
+    padding: 1rem;
+    margin: 0.5rem;
     width: 250px;
-    border-radius: 5px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    border-radius: 0.25rem;
+    box-shadow: var(--shadow-color) var(--shadow-offset);
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
+    height: 100%;
   }
   
   @media (max-width: 768px) {
@@ -23,7 +25,7 @@
   }
   
   .recipe-by {
-    color: gray;
+    color: var(--secondary-font);;
     margin-bottom: 32px;
   }
   
@@ -34,7 +36,7 @@
   
   .recipe-link {
     text-decoration: none;
-    color: rgb(232, 99, 36);
+    color: var(--accent-color);
   }
   
   .save-recipe,

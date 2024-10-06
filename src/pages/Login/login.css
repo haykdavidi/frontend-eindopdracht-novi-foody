@@ -4,39 +4,40 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 1.25rem;
 }
 
 .form-header {
     font-family: 'Cooking', serif;
-    font-size: 72px;
+    font-size: 4.5rem;
     margin: 0;
 }
 
 .error-message {
     color: red;
 }
+
 @media (max-width: 768px) {
     .form-header {
-        font-size: 60px;
+        font-size: 3.75rem;
     }
 }
 
 .form-description {
     font-family: 'Anko', serif;
-    font-size: 20px;
-    margin-bottom: 32px;
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
 }
 
 @media (max-width: 768px) {
     .form-description {
-        font-size: 16px;
+        font-size: 1rem;
     }
 }
 
 .form-item {
-    width: 30%;
-    margin-bottom: 32px;
+    width: 45%;
+    margin-bottom: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -47,41 +48,35 @@
 
 .form-item-label {
     display: block;
-    margin: 0 0 8px 8px;
+    margin: 0 0 0.5rem 0.5rem;
 }
 
 .form-item-input {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 0.5rem;
+    border: var(--border-size) var(--input-border);
+    border-radius: 0.25rem;
 }
 
 .submit-form-button {
-    padding: 16px 0;
-    margin-top: 16px;
-    border-radius: 25px;
+    padding: 1rem 2rem;
+    border-radius: 1.5625rem;
     border: none;
-    background: rgb(232, 99, 36);
-    color: white;
-    font-size: 16px;
+    background: var(--accent-color);
+    color: var(--font-with-background);
+    font-size: 1rem;
     cursor: pointer;
-    width: 30%;
+    white-space: nowrap;
+    text-align: center;
 }
 
 .submit-form-button:hover {
     filter: brightness(90%);
 }
 
-@media (max-width: 768px) {
-    .submit-form-button {
-        width: 90%;
-    }
-}
-
 .create-account {
     width: 30%;
-    margin-top: 32px;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
 }
@@ -93,8 +88,14 @@
 }
 
 .create-account-label {
-    color: rgb(232, 99, 36);
-    margin-left: 8px;
+    color: var(--accent-color);
+    margin-left: 0.5rem;
     cursor: pointer;
     text-decoration: none;
+}
+
+#login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

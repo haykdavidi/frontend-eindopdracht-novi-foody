@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { TbPlus, TbSearch } from "react-icons/tb";
 import RecipeCard from "../../components/Cards/index.jsx";
 import './fridge.css';
+import axios from "axios";
 
 function Fridge() {
   const [query, setQuery] = useState("");
@@ -25,16 +26,21 @@ function Fridge() {
   };
 
   const onEnter = (e) => {
-    if (e.key === "Enter" && !filters.includes(e.target.value)) {
-      search(e.target.value);
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (!filters.includes(query)) {
+        search(query);
+      }
     }
   };
 
-  const onSearchClick = () => {
+  const onSearchClick = (e) => {
+    e.preventDefault();
     search(query);
   };
 
-  const addFilter = () => {
+  const addFilter = (e) => {
+    e.preventDefault();
     const splitQuery = query.split(" ");
     splitQuery.forEach(term => {
       if (!filters.includes(term) && term.length > 0) {
@@ -50,13 +56,12 @@ function Fridge() {
   };
 
   const fetchRecipes = async () => {
-    const app_id = '3738d17e'; // Replace with your Edamam app ID
+    const app_id = '3738d17e';
     const app_key = 'bbe48a223f253671896036d5c4faf81e';
     const q = filters.join(" ");
     try {
-      const res = await fetch(`https://api.edamam.com/search?q=${q}&app_id=${app_id}&app_key=${app_key}`);
-      if (!res.ok) throw new Error('Network response was not ok');
-      return await res.json();
+      const res = await axios.get(`https://api.edamam.com/search?q=${q}&app_id=${app_id}&app_key=${app_key}`);
+      return res.data;
     } catch (error) {
       console.error("Failed to fetch recipes", error);
       return { hits: [] };
@@ -76,42 +81,48 @@ function Fridge() {
   }, [filters]);
 
   return (
-    <div className="search-container" data-aos="fade-up">
-      <div className="search-bar" data-aos="fade-in">
-        <input
-          className="search-input"
-          onChange={handleQueryChange}
-          onKeyDown={onEnter}
-          value={query}
-          placeholder="Ingredients e.g. chicken, broccoli, rice"
-        />
-        <button className="add-filter-button" onClick={addFilter}><TbPlus /></button>
-        <button className="search-button" onClick={onSearchClick}><TbSearch /></button>
-      </div>
+      <section className="search-container" data-aos="fade-up">
+        <section className="search-bar" data-aos="fade-in" onSubmit={(e) => e.preventDefault()}>
+          <form className="input-container">
+            <input
+                className="search-input"
+                onChange={handleQueryChange}
+                onKeyDown={onEnter}
+                value={query}
+                placeholder="Ingredients e.g. chicken, broccoli, rice"
+            />
+            <button type="button" className="add-filter-button" onClick={addFilter}><TbPlus/></button>
+            <button type="button" className="search-button" onClick={onSearchClick}><TbSearch/></button>
+          </form>
+        </section>
 
-      <div className="filters" data-aos="fade-up">
-        {filters.map((filter, i) => (
-          <div className="filter" key={`filter-${i}`}>
-            <span className="filter-value">{filter}</span>
-            <button className="remove-filter-button" onClick={() => removeFilter(i)}>⨯</button>
-          </div>
-        ))}
-      </div>
+        <section className="filters" data-aos="fade-up">
+          <ul>
+            {filters.map((filter, i) => (
+                <li className="filter" key={`filter-${i}`}>
+                  <span className="filter-value">{filter}</span>
+                  <button type="button" className="remove-filter-button" onClick={() => removeFilter(i)}
+                          aria-label="Remove filter">⨯
+                  </button>
+                </li>
+            ))}
+          </ul>
+        </section>
 
-      <div className="results" data-aos="fade-up">
-        {(!loading && results.length === 0) && (
-          <p className="results-placeholder">What do you have in your fridge?</p>
-        )}
-        {loading && (
-          <div className="spinner"></div>
-        )}
-        {(!loading && results.length > 0) && (
-          results.map((result, i) => (
-            <RecipeCard rec={result.recipe} key={`recipe-${i}`} data-aos="fade-up" />
-          ))
-        )}
-      </div>
-    </div>
+        <div className="results" data-aos="fade-up">
+          {(!loading && results.length === 0) && (
+              <p className="results-placeholder">What do you have in your fridge?</p>
+          )}
+          {loading && (
+              <div className="spinner"></div>
+          )}
+          {(!loading && results.length > 0) && (
+              results.map((result, i) => (
+                  <RecipeCard rec={result.recipe} key={`recipe-${i}`} data-aos="fade-up" />
+              ))
+          )}
+        </div>
+      </section>
   );
 }
 
