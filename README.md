@@ -130,7 +130,8 @@ Ensure your code follows proper formatting and style with:
 ```sh
     npm run lint
   ```
-
+# MIT License
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
 
 
