@@ -109,4 +109,28 @@ The application utilizes the Context API to manage global states such as user au
     ```sh
     npm run dev
     ```
-## Additional Commands
+# Additional Commands
+
+Here are some additional commands you may use:
+
+## Build for Production
+To create a production-ready version of the app, run:
+```sh
+    npm run build
+  ```
+This will generate optimized static files in the build/ directory.
+
+## Run Tests
+If there are any unit or integration tests, you can run them using:
+```sh
+    npm test
+  ```
+## Lint the code
+Ensure your code follows proper formatting and style with:
+```sh
+    npm run lint
+  ```
+
+
+
+
